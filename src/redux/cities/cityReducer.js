@@ -1,6 +1,6 @@
 import cityTypes from './cityTypes';
 
-const cities = JSON.parse(localStorage.getItem('cities'));
+const cities = JSON.parse(localStorage.getItem('cities')) || [];
 
 const INITIAL_STATE = {
   cities

@@ -6,11 +6,11 @@ import { getDetailWeather } from '../redux/weather/weatherAction';
 
 const Favourite = ({ cities, groupWeather, getDetailWeather }) => {
   useEffect(() => {
-    if (cities) {
+    if (cities.length) {
       getDetailWeather(cities.join(','));
     }
   }, [cities, getDetailWeather]);
-  return cities ? (
+  return cities.length ? (
     <div>
       <Typography align='center' variant='h5'>
         Favourites
