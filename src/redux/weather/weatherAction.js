@@ -11,6 +11,9 @@ export const searchWeather = location => {
         payload: data
       });
     } catch (error) {
+      dispatch({
+        type: weatherTypes.CLEAR_WEATHER
+      });
       dispatch(showNotification(error.message));
     }
   };
