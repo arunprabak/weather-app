@@ -10,7 +10,7 @@ const Favourite = ({ cities, groupWeather, getDetailWeather }) => {
       getDetailWeather(cities.join(','));
     }
   }, [cities, getDetailWeather]);
-  return cities.length ? (
+  return cities ? (
     <div>
       <Typography align='center' variant='h5'>
         Favourites
