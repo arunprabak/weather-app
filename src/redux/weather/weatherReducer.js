@@ -1,8 +1,11 @@
 import weatherTypes from './weatherTypes';
 
 const INITIAL_STATE = {
-  weather: [],
-  detailWeather: []
+  cityWeather: null,
+  groupWeather: null,
+  noResults: false,
+  detailWeather: [],
+  hourlyWeather: null
 };
 
 const weatherReducer = (state = INITIAL_STATE, action) => {
@@ -10,17 +13,32 @@ const weatherReducer = (state = INITIAL_STATE, action) => {
     case weatherTypes.SEARCH_WEATHER:
       return {
         ...state,
-        weather: action.payload
+        cityWeather: action.payload
       };
-    case weatherTypes.GET_WEATHER:
+    case weatherTypes.GROUP_WEATHER:
       return {
         ...state,
-        weather: []
+        groupWeather: action.payload
       };
     case weatherTypes.DETAIL_WEATHER:
       return {
         ...state,
         detailWeather: []
+      };
+    case weatherTypes.CLEAR_WEATHER:
+      return {
+        ...state,
+        cityWeather: null
+      };
+    case weatherTypes.NO_WEATHER:
+      return {
+        ...state,
+        noResults: true
+      };
+    case weatherTypes.HOURLY_WEATHER:
+      return {
+        ...state,
+        hourlyWeather: action.payload
       };
     default:
       return state;

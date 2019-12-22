@@ -1,7 +1,8 @@
 import notificationTypes from './notificationTypes';
 
 const INITIAL_STATE = {
-  message: null
+  message: null,
+  isOpen: false
 };
 
 const notificationReducer = (state = INITIAL_STATE, action) => {
@@ -9,9 +10,15 @@ const notificationReducer = (state = INITIAL_STATE, action) => {
     case notificationTypes.SHOW_NOTIFICATION:
       return {
         ...state,
+        isOpen: true,
         message: action.payload
       };
-
+    case notificationTypes.CLOSE_NOTIFICATION:
+      return {
+        ...state,
+        isOpen: false,
+        message: null
+      };
     default:
       return state;
   }

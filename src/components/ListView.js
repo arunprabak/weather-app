@@ -1,11 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import ListItemDetail from './ListItemDetail';
+import NoData from './NoData';
 
-const ListView = () => {
-  return (
-    <div>
-      <h1>ListView</h1>
-    </div>
-  );
+const ListView = ({ weather, noResults }) => {
+  const message = noResults ? 'No data available' : 'Search....';
+
+  return weather ? <ListItemDetail weather={weather} /> : <NoData message={message} />;
 };
 
-export default ListView;
+const mapStateToProps = ({ weather }) => ({
+  weather: weather.cityWeather,
+  noResults: weather.noResults
+});
+
+export default connect(mapStateToProps)(ListView);
