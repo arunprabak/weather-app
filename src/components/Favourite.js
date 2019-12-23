@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Typography } from '@material-ui/core';
 import ListItemDetail from './ListItemDetail';
 import { getDetailWeather } from '../redux/weather/weatherAction';
+import Search from './Search';
+import ListView from './ListView';
 
 const Favourite = ({ cities, groupWeather, getDetailWeather }) => {
   useEffect(() => {
@@ -10,17 +12,24 @@ const Favourite = ({ cities, groupWeather, getDetailWeather }) => {
       getDetailWeather(cities.join(','));
     }
   }, [cities, getDetailWeather]);
-  return cities.length ? (
+
+  return (
     <div>
-      <Typography align='center' variant='h5'>
-        Favourites
-      </Typography>
-      {groupWeather &&
-        groupWeather.map(weather => (
-          <ListItemDetail key={weather.id} weather={weather} isFavourite={true} />
-        ))}
+      <Search />
+      <ListView />
+      {cities.length ? (
+        <div>
+          <Typography align='center' variant='h5'>
+            Favourites
+          </Typography>
+          {groupWeather &&
+            groupWeather.map(weather => (
+              <ListItemDetail key={weather.id} weather={weather} isFavourite={true} />
+            ))}
+        </div>
+      ) : null}
     </div>
-  ) : null;
+  );
 };
 
 const mapStateToProps = ({ city, weather }) => ({

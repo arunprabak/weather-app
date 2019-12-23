@@ -49,32 +49,34 @@ const ListItemDetail = ({
   };
 
   return weather ? (
-    <Card className={classes.listCard}>
-      <List className={classes.list}>
-        <ListItem display='flex' onClick={openDetailPage}>
-          <ListItemAvatar>
-            <Avatar src={weather.icon} />
-          </ListItemAvatar>
-          <ListItemText primary={`City: ${weather.name}`} />
-          <ListItemText primary={`Country: ${weather.country}`} />
-          <ListItemText primary={`Main: ${weather.main}`} />
-          <ListItemText primary={`Description: ${weather.description}`} />
-          <ListItemText primary={`Date: ${weather.date}`} />
-          <ListItemText primary={`Sunrise: ${weather.sunrise}`} />
-          <ListItemText primary={`Sunset: ${weather.sunset}`} />
-        </ListItem>
-        <Fab
-          className='floating-btn'
-          button='true'
-          color='secondary'
-          size='small'
-          aria-label='add'
-          onClick={e => handleFavourite(e)}
-        >
-          {isFavourite ? <RemoveIcon /> : <AddIcon />}
-        </Fab>
-      </List>
-    </Card>
+    <div className='list-item-view'>
+      <Card className={classes.listCard}>
+        <List className={classes.list}>
+          <ListItem display='flex' onClick={openDetailPage}>
+            <ListItemAvatar>
+              <Avatar src={weather.icon} />
+            </ListItemAvatar>
+            <ListItemText primary={`City: ${weather.name}`} />
+            <ListItemText primary={`Country: ${weather.country}`} />
+            <ListItemText primary={`Main: ${weather.main}`} />
+            <ListItemText primary={`Description: ${weather.description}`} />
+            <ListItemText primary={`Date: ${weather.date}`} />
+            <ListItemText primary={`Sunrise: ${weather.sunrise}`} />
+            <ListItemText primary={`Sunset: ${weather.sunset}`} />
+          </ListItem>
+          <Fab
+            className='floating-btn'
+            button='true'
+            color='secondary'
+            size='small'
+            aria-label='add'
+            onClick={e => handleFavourite(e)}
+          >
+            {isFavourite ? <RemoveIcon /> : <AddIcon />}
+          </Fab>
+        </List>
+      </Card>
+    </div>
   ) : null;
 };
 
